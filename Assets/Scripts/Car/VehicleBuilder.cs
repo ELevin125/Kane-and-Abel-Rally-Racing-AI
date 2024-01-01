@@ -44,7 +44,7 @@ public class VehicleBuilder : MonoBehaviour
             wf.tireRadius = config.tireRadius;
             wf.tireMass = config.tireMass;
             wf.wheelPrefab = config.wheelPrefab;
-            // wf.skidThreshold = config.skidThreshold;
+            wf.skidThreshold = config.skidThreshold;
             wf.topSpeed = config.topSpeed;
             wf.maxTorque = config.maxTorque;
             wf.TorqueCurveOffset = config.TorqueCurveOffset;
