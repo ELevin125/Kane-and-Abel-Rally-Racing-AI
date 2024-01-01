@@ -30,9 +30,7 @@ public class Steering : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        vehicleControls.Vehicle.Steering.performed += ctx => steeringInput = ctx.ReadValue<float>();
-        vehicleControls.Vehicle.Steering.canceled += ctx => steeringInput = 0f;
+        steeringInput = CarController.Instance.steeringInput;
 
         Quaternion targetRotation = originalRotation;
 

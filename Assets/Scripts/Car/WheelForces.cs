@@ -36,10 +36,6 @@ public class WheelForces : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float TorqueCurveOffset;
 
-    public VehicleControls vehicleControls;
-    private float throttleInput = 0;
-    private float brakeInput = 0;
-    private bool handbrakeInput = false;
 
     private float normalizedSpeed = 0.0f;
     
@@ -62,7 +58,6 @@ public class WheelForces : MonoBehaviour
     {
         normalizedSpeed = Mathf.Clamp01(Mathf.Abs(rb.velocity.magnitude) / topSpeed);
 
-        Inputs();
         SkidMarks();
         RotateWheels();
         trueRestDist = suspensionRestDist + tireRadius;
@@ -81,17 +76,6 @@ public class WheelForces : MonoBehaviour
         }
     }
 
-    void Inputs()
-    {
-        vehicleControls.Vehicle.Throttle.performed += ctx => throttleInput = ctx.ReadValue<float>();
-        vehicleControls.Vehicle.Throttle.canceled += ctx => throttleInput = 0f;
-
-        vehicleControls.Vehicle.Brake.performed += ctx => brakeInput = ctx.ReadValue<float>();
-        vehicleControls.Vehicle.Brake.canceled += ctx => brakeInput = 0f;
-
-        vehicleControls.Vehicle.Hadbrake.performed += ctx => handbrakeInput = true;
-        vehicleControls.Vehicle.Hadbrake.canceled += ctx => handbrakeInput = false;
-    }
 
     void SkidMarks()
     {
@@ -132,7 +116,7 @@ public class WheelForces : MonoBehaviour
 
         float understeerPenalty = Mathf.Clamp01(1 - normalizedSpeed + 0.2f);
         float desiredVelChange = -steeringVel * tireGrip * understeerPenalty;
-        desiredVelChange = handbrakeInput ? desiredVelChange * tireGripHandbrakeLoss : desiredVelChange;
+        desiredVelChange = CarController.Instance.handbrake ? desiredVelChange * tireGripHandbrakeLoss : desiredVelChange;
 
         float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
 
@@ -142,7 +126,7 @@ public class WheelForces : MonoBehaviour
 
     void Movement()
     {
-        float accelInput = throttleInput - brakeInput;
+        float accelInput = CarController.Instance.throttleInput - CarController.Instance.brakeInput;
 
         Vector3 accelDir = transform.forward;
         if (!Mathf.Approximately(accelInput, 0))
@@ -158,7 +142,7 @@ public class WheelForces : MonoBehaviour
 
     void RotateWheels()
     {
-        float accelInput = throttleInput - brakeInput;
+        float accelInput = CarController.Instance.throttleInput - CarController.Instance.brakeInput;
         float vehicleSpeed = rb.GetPointVelocity(transform.position).magnitude;
         // creates fake wheelspin, and prevents the powered wheels from not spinning if they are not on the ground
         vehicleSpeed = powered ? Mathf.Max(vehicleSpeed, 1) * 2.0f : vehicleSpeed * 2.0f; 

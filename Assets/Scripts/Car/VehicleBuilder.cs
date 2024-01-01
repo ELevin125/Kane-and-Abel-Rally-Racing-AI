@@ -13,20 +13,8 @@ public class VehicleBuilder : MonoBehaviour
 
     private GameObject[] allWheels;
 
-    private VehicleControls vehicleControls;
-
-    private void OnEnable()
-    {
-        vehicleControls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        vehicleControls.Disable();
-    }
     private void Awake()
     {
-        vehicleControls = new VehicleControls();
 
         allWheels = frontWheels.Concat(backWheels).ToArray();
         foreach (GameObject wheel in allWheels)
@@ -51,8 +39,6 @@ public class VehicleBuilder : MonoBehaviour
             wf.TorqueCurveOffset = config.TorqueCurveOffset;
             wf.tireGrip = config.rearTireGrip;
             wf.tireGripHandbrakeLoss = config.rearTireGripHandbrakeLoss;
-
-            wf.vehicleControls = vehicleControls;
         }
 
 
@@ -74,7 +60,6 @@ public class VehicleBuilder : MonoBehaviour
             st.turnSpeed = config.turnSpeed;
             st.maxTurningAngle = config.maxTurningAngle;
 
-            st.vehicleControls = vehicleControls;
         }
     }
 
