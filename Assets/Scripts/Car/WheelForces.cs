@@ -26,8 +26,8 @@ public class WheelForces : MonoBehaviour
     public float tireMass;
     public Transform wheelPrefab;
     private Transform wheel;
-    // public float skidThreshold = 8f;
-    // private TrailRenderer trailRenderer;
+    public float skidThreshold = 8f;
+    private TrailRenderer trailRenderer;
     public Transform wheelModel;
 
     [Header("Engine")]
@@ -53,7 +53,7 @@ public class WheelForces : MonoBehaviour
             wheel = Instantiate(wheelPrefab, transform.position, Quaternion.identity);
             wheel.parent = transform;
             wheelModel = transform.GetChild(0).GetChild(0);
-            // trailRenderer = GetComponentInChildren<TrailRenderer>();
+            trailRenderer = GetComponentInChildren<TrailRenderer>();
         }
 
     }
@@ -76,8 +76,8 @@ public class WheelForces : MonoBehaviour
         else
         {
 
-            // if (trailRenderer.emitting)
-            //     trailRenderer.emitting = false;
+            if (trailRenderer.emitting)
+                trailRenderer.emitting = false;
         }
     }
 
@@ -100,10 +100,10 @@ public class WheelForces : MonoBehaviour
 
         float steeringVel = Vector3.Dot(steeringDir, tireVel);
 
-        // if (Mathf.Abs(steeringVel) < skidThreshold)
-        //     trailRenderer.emitting = true;
-        // else if (trailRenderer.emitting)
-        //     trailRenderer.emitting = false;
+        if (Mathf.Abs(steeringVel) < skidThreshold)
+            trailRenderer.emitting = true;
+        else if (trailRenderer.emitting)
+            trailRenderer.emitting = false;
     }
 
     void Suspension(RaycastHit hit)
