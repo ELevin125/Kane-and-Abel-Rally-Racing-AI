@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,7 +43,10 @@ public class WheelForces : MonoBehaviour
     
     private void Start()
     {
-        rb = transform.root.GetComponent<Rigidbody>();
+        // Grab rigidbody from grandparent
+        if (transform != null && transform.parent != null && transform.parent.parent != null)
+            rb = transform.parent.parent.GetComponent<Rigidbody>();
+
         carTransform = transform.root;
 
         if (wheelPrefab)
@@ -135,7 +140,6 @@ public class WheelForces : MonoBehaviour
 
             float powerCurveValue = -30f * (Mathf.Pow((normalizedSpeed - TorqueCurveOffset), 6f)) + 1.0f;
             float availableTorque = accelInput * powerCurveValue * maxTorque;
-            Debug.DrawRay(transform.position, accelDir * availableTorque, Color.red);
             rb.AddForceAtPosition(accelDir * availableTorque, transform.position);
         }
     }

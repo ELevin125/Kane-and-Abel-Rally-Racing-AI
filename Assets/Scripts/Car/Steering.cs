@@ -17,11 +17,6 @@ public class Steering : MonoBehaviour
 
     public float minSteer = 0.5f;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(transform.position, transform.forward * 2f);
-    }
 
     void Start()
     {
