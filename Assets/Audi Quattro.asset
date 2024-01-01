@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b552e50a16d3444ca04189a00aeeb75, type: 3}
+  m_Name: Audi Quattro
+  m_EditorClassIdentifier: 
+  suspensionRestDist: 0.06
+  maxSpringStretch: 0.17
+  springStregth: 6200
+  springDamper: 100
+  allWheelDrive: 1
+  tireRadius: 0.34
+  frontTireGrip: 1.5
+  frontTireGripHandbrakeLoss: 1
+  rearTireGrip: 1
+  rearTireGripHandbrakeLoss: 0.2
+  tireMass: 1
+  wheelPrefab: {fileID: 4914992928315112729, guid: 3109d342b92c24c47a26d97c00c12e5e, type: 3}
+  skidThreshold: 0.85
+  turnSpeed: 200
+  maxTurningAngle: 33
+  topSpeed: 50
+  maxTorque: 300
+  TorqueCurveOffset: 0.48
