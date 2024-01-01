@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -79,6 +80,9 @@ public class VehicleBuilder : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + GetComponent<Rigidbody>().velocity * 2);
+
         foreach (GameObject wheel in allWheels)
         {
             Gizmos.color = Color.yellow;

@@ -131,9 +131,7 @@ public class WheelForces : MonoBehaviour
         float steeringVel = Vector3.Dot(steeringDir, tireVel);
 
         float understeerPenalty = Mathf.Clamp01(1 - normalizedSpeed + 0.2f);
-
         float desiredVelChange = -steeringVel * tireGrip * understeerPenalty;
-
         desiredVelChange = handbrakeInput ? desiredVelChange * tireGripHandbrakeLoss : desiredVelChange;
 
         float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
@@ -153,7 +151,7 @@ public class WheelForces : MonoBehaviour
 
             float powerCurveValue = -30f * (Mathf.Pow((normalizedSpeed - TorqueCurveOffset), 6f)) + 1.0f;
             float availableTorque = accelInput * powerCurveValue * maxTorque;
-            Debug.DrawRay(transform.position, accelDir * availableTorque);
+            Debug.DrawRay(transform.position, accelDir * availableTorque, Color.red);
             rb.AddForceAtPosition(accelDir * availableTorque, transform.position);
         }
     }
