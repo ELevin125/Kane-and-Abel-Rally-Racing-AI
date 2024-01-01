@@ -64,16 +64,16 @@ public class VehicleBuilder : MonoBehaviour
             if (!config.allWheelDrive)
                 wf.powered = false;
 
-            // Steering st;
-            // if (frontWheel.TryGetComponent(out Steering existingST))
-            //     st = existingST;
-            // else
-            //     st = frontWheel.AddComponent<Steering>();
+            Steering st;
+            if (frontWheel.TryGetComponent(out Steering existingST))
+                st = existingST;
+            else
+                st = frontWheel.AddComponent<Steering>();
 
-            // st.turnSpeed = config.turnSpeed;
-            // st.maxTurningAngle = config.maxTurningAngle;
+            st.turnSpeed = config.turnSpeed;
+            st.maxTurningAngle = config.maxTurningAngle;
 
-            // st.vehicleControls = vehicleControls;
+            st.vehicleControls = vehicleControls;
         }
     }
 

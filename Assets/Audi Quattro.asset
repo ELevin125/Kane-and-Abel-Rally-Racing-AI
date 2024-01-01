@@ -23,7 +23,7 @@ MonoBehaviour:
   rearTireGrip: 1
   rearTireGripHandbrakeLoss: 0.2
   tireMass: 1
-  wheelPrefab: {fileID: 4914992928315112729, guid: 3109d342b92c24c47a26d97c00c12e5e, type: 3}
+  wheelPrefab: {fileID: 4914992928315112729, guid: eaad5f98450569f4885eb965d35c6540, type: 3}
   skidThreshold: 0.85
   turnSpeed: 200
   maxTurningAngle: 33
