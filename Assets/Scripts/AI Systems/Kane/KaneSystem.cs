@@ -46,6 +46,7 @@ public class KaneSystem : MonoBehaviour
     {
         steeringRays = CalculateRays(steeringRayCount, halfFieldOfView, rowCount, 3f, rowIncrement, steeringRayDistance);
 
+        // Change ray aim based on speed, higher speed aims further away
         float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
         float topSpeed = 35f;
         float normalisedSpeed = forwardVelocity / topSpeed;
@@ -110,7 +111,7 @@ public class KaneSystem : MonoBehaviour
             CarController.Instance.SetSteeringInput(steeringAngle);
             CarController.Instance.SetThrottleInput(speedInput);
             float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
-            // Debug.Log("velos " + forwardVelocity.ToString());
+
             CarController.Instance.SetBrakeInput((1-speedInput));
             if (forwardVelocity > 10f)
             {
@@ -121,15 +122,11 @@ public class KaneSystem : MonoBehaviour
             {
                 CarController.Instance.SetBrakeInput(0);
             }
-            // Debug.Log(steeringAngle);
 
             if (MathF.Abs(steeringAngle) > 1.3)
                 CarController.Instance.SetHandbrake(true);
             else
                 CarController.Instance.SetHandbrake(false);
-
-            // Debug.Log("Throt " +CarController.Instance.throttleInput.ToString());
-            // Debug.Log("brake " + CarController.Instance.brakeInput.ToString());
         }
         
         // steeringAngle = 0f;
@@ -140,7 +137,6 @@ public class KaneSystem : MonoBehaviour
 
     float CalculateSteeringInput(float previousInput = 0f)
     {
-
         float steeringInput = previousInput;
 
         for (int i = 0; i < steeringRays.Length; i++)
@@ -193,7 +189,6 @@ public class KaneSystem : MonoBehaviour
                 }
                 else
                 {
-                    // throttleInput -= 1f / (float)speedRays.Length;
                     Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.red);   
                 }
             }
