@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suspensionRestDist: 0.06
   maxSpringStretch: 0.17
-  springStregth: 6200
-  springDamper: 100
+  springStregth: 8200
+  springDamper: 300
   powered: 1
   tireRadius: 0.34
   tireGrip: 1.5
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suspensionRestDist: 0.06
   maxSpringStretch: 0.17
-  springStregth: 6200
-  springDamper: 100
+  springStregth: 8200
+  springDamper: 300
   powered: 1
   tireRadius: 0.34
   tireGrip: 1.5
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 8598771245981540725}
   m_Layer: 0
   m_Name: Body_Mesh
-  m_TagString: Untagged
+  m_TagString: car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,8 +334,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suspensionRestDist: 0.06
   maxSpringStretch: 0.17
-  springStregth: 6200
-  springDamper: 100
+  springStregth: 8200
+  springDamper: 300
   powered: 1
   tireRadius: 0.34
   tireGrip: 1
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 2794554637312913635}
   m_Layer: 0
   m_Name: AWD Car
-  m_TagString: Untagged
+  m_TagString: car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -522,8 +522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suspensionRestDist: 0.06
   maxSpringStretch: 0.17
-  springStregth: 6200
-  springDamper: 100
+  springStregth: 8200
+  springDamper: 300
   powered: 1
   tireRadius: 0.34
   tireGrip: 1

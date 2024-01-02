@@ -45,7 +45,11 @@ public class KaneSystem : MonoBehaviour
     void Update()
     {
         steeringRays = CalculateRays(steeringRayCount, halfFieldOfView, rowCount,  3f, rowIncrement, steeringRayDistance);
-        speedRays = CalculateRays(6, 3f, speedRowCount,  0.2f, speedRowIncrement, speedRayDistance);
+
+        float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
+        float topSpeed = 35f;
+        float normalisedSpeed = forwardVelocity / topSpeed;
+        speedRays = CalculateRays(6, 3f, speedRowCount,  0.2f, speedRowIncrement, speedRayDistance + (1.5f * (1f - normalisedSpeed)));
         ControlCar();
     }
 
@@ -88,20 +92,19 @@ public class KaneSystem : MonoBehaviour
             CarController.Instance.SetThrottleInput(speedInput);
             float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
             Debug.Log("velos " + forwardVelocity.ToString());
-            if (forwardVelocity  > 10f)
+            CarController.Instance.SetBrakeInput((1-speedInput));
+            if (forwardVelocity > 10f)
             {
                 if ((1-speedInput) > 0.33f && Mathf.Abs(steeringAngle) < 0.2)
                     CarController.Instance.SetBrakeInput(1f);
-                else
-                    CarController.Instance.SetBrakeInput((1-speedInput));
             }
             else
             {
                 CarController.Instance.SetBrakeInput(0);
             }
 
-            Debug.Log("Throt " +CarController.Instance.throttleInput.ToString());
-            Debug.Log("brake " + CarController.Instance.brakeInput.ToString());
+            // Debug.Log("Throt " +CarController.Instance.throttleInput.ToString());
+            // Debug.Log("brake " + CarController.Instance.brakeInput.ToString());
         }
         
         steeringAngle *= steeringCenterRate;

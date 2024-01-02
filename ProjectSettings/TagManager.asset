@@ -6,6 +6,7 @@ TagManager:
   tags:
   - wheel
   - road
+  - car
   layers:
   - Default
   - TransparentFX
