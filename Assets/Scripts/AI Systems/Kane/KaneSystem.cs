@@ -104,7 +104,7 @@ public class KaneSystem : MonoBehaviour
             }
             Debug.Log(steeringAngle);
 
-            if (MathF.Abs(steeringAngle) > 1.4)
+            if (MathF.Abs(steeringAngle) > 1.3)
                 CarController.Instance.SetHandbrake(true);
             else
                 CarController.Instance.SetHandbrake(false);
