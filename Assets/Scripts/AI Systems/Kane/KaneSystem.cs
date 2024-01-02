@@ -44,7 +44,7 @@ public class KaneSystem : MonoBehaviour
 
     void Update()
     {
-        steeringRays = CalculateRays(steeringRayCount, halfFieldOfView, rowCount,  3f, rowIncrement, steeringRayDistance);
+        steeringRays = CalculateRays(steeringRayCount, halfFieldOfView, rowCount, 3f, rowIncrement, steeringRayDistance);
 
         float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
         float topSpeed = 35f;
