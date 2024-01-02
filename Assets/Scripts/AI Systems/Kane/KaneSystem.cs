@@ -49,8 +49,27 @@ public class KaneSystem : MonoBehaviour
         float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
         float topSpeed = 35f;
         float normalisedSpeed = forwardVelocity / topSpeed;
-        speedRays = CalculateRays(12, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayDistance + (1.5f * (1f - normalisedSpeed)));
+        float speedRayAngle = speedRayDistance + (1.5f * (1f - normalisedSpeed));
+        // Aim rays down when car tilts up or down, to ensure rays hit the road
+        if (Mathf.Abs(NormalizeAngle(gameObject.transform.localEulerAngles.x)) > 1)
+            speedRayAngle += MathF.Min(Mathf.Abs(NormalizeAngle(gameObject.transform.localEulerAngles.x)) / 12 * 6f, 6f);
+
+        speedRays = CalculateRays(12, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayAngle);
         ControlCar();
+    }
+    float NormalizeAngle(float angle)
+    {
+        while (angle > 180f)
+        {
+            angle -= 360f;
+        }
+
+        while (angle <= -180f)
+        {
+            angle += 360f;
+        }
+
+        return angle;
     }
 
     // starting left, first half points left, second half points right 
@@ -102,7 +121,7 @@ public class KaneSystem : MonoBehaviour
             {
                 CarController.Instance.SetBrakeInput(0);
             }
-            Debug.Log(steeringAngle);
+            // Debug.Log(steeringAngle);
 
             if (MathF.Abs(steeringAngle) > 1.3)
                 CarController.Instance.SetHandbrake(true);
@@ -150,7 +169,7 @@ public class KaneSystem : MonoBehaviour
                 }
             }
             else
-                Debug.DrawRay(rayOrigin, rayDirection * 100, Color.black);   
+                Debug.DrawRay(rayOrigin, rayDirection * 100, Color.yellow);   
         }
 
         return steeringInput;
