@@ -25,14 +25,19 @@ public class KaneSystem : MonoBehaviour
     public float steeringCenterRate = 0.8f;
     
     [Header("Speed Control")]
-    public float speedRayDistance = 2f;
+    public float speedRayDistance = 1.4f;
     [SerializeField]
     private Vector3[] speedRays;
     public int speedRowCount = 12;
     public float speedRowIncrement = 0.5f;
 
+
+    private Rigidbody rb;
+
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
         if (steeringRayCount % 2 != 0)
             Debug.LogError("Should have an even amount of rays");
     }
@@ -60,7 +65,6 @@ public class KaneSystem : MonoBehaviour
             {
                 // Calculate direction for each ray within the specified range, slightly angled downwards
                 Vector3 rayDirection = Quaternion.AngleAxis(angle + Mathf.Sign(angle) * spread * j, transform.up) * Quaternion.AngleAxis(verticalAngle + rowIncrement * j * j, transform.right) * transform.forward;
-                // Vector3 rayDirection = Quaternion.AngleAxis(angle, transform.up) * Quaternion.AngleAxis(verticalAngle + rowIncrement * j * j, transform.right) * transform.forward;
             
                 rays.Add(rayDirection);
             }
@@ -82,7 +86,7 @@ public class KaneSystem : MonoBehaviour
             
             CarController.Instance.SetSteeringInput(steeringAngle);
             CarController.Instance.SetThrottleInput(speedInput);
-            float forwardVelocity = Vector3.Dot(transform.forward, GetComponent<Rigidbody>().velocity);
+            float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
             Debug.Log("velos " + forwardVelocity.ToString());
             if (forwardVelocity  > 10f)
             {
@@ -94,13 +98,8 @@ public class KaneSystem : MonoBehaviour
             else
             {
                 CarController.Instance.SetBrakeInput(0);
-                // if (speedInput > 0.2f)
-                //     CarController.Instance.SetHandbrake(true);
             }
 
-            // CarController.Instance.SetThrottleInput(1 - ((nonRoadHits) / steeringRays.Length));
-            // float brakeInput = 2 * nonRoadHits / steeringRays.Length;
-            // CarController.Instance.SetBrakeInput(brakeInput);
             Debug.Log("Throt " +CarController.Instance.throttleInput.ToString());
             Debug.Log("brake " + CarController.Instance.brakeInput.ToString());
         }
@@ -109,10 +108,10 @@ public class KaneSystem : MonoBehaviour
         if (Mathf.Abs(steeringAngle) < 0.05f)
             steeringAngle = 0;
     }
-    int nonRoadHits = 0;
+
     float CalculateSteeringInput(float previousInput = 0f)
     {
-        nonRoadHits = 0;
+
         float steeringInput = previousInput;
 
         for (int i = 0; i < steeringRays.Length; i++)
@@ -124,7 +123,6 @@ public class KaneSystem : MonoBehaviour
             {
                 if (hit.collider.tag != "road")
                 {
-                    nonRoadHits++;
                     if (i < steeringRays.Length / 2)
                     {
                         Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.cyan);   
@@ -175,14 +173,5 @@ public class KaneSystem : MonoBehaviour
         }
 
         return throttleInput;
-
-        // return 2 * (float)nonRoadHits / totalRaysCount;
-        // float ratio = (float)nonRoadHits / totalRaysCount;
-        // float exponent = 2.0f;
-
-        // // Exponential function to control the growth of BrakeInput based on the ratio
-        // float brakeInput = Mathf.Pow(ratio, exponent);
-
-        // return brakeInput;
     }
 }
