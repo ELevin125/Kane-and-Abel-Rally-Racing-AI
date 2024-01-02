@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class KaneSystem : MonoBehaviour
 {   
     public int rowCount = 3;
@@ -12,7 +13,7 @@ public class KaneSystem : MonoBehaviour
     public float rowIncrement = 0.5f;
     public float rayHeight = 5f;
     [SerializeField]
-    private Quaternion[] mainVisionRays;
+    private Vector3[] mainVisionRays;
     [SerializeField]
     private float steeringAngle = 0f;
     // how fast does the steering go back to 0
@@ -32,18 +33,17 @@ public class KaneSystem : MonoBehaviour
     }
 
     // starting left, first half points left, second half points right 
-    Quaternion[] CalculateRays()
+    Vector3[] CalculateRays()
     {
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // BUGGED - as car rotates around y axis, the spread of the vertical rays change
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        List<Quaternion> rays = new List<Quaternion>();
+        List<Vector3> rays = new List<Vector3>();
         for (int i = 0; i < visionRaysCount; i++)
         {
             float angle = i * (halfFieldOfView * 2f / (visionRaysCount - 1)) - halfFieldOfView; // Calculate angle within the specified range
             for (int j = 0; j < rowCount; j++)
             {
-                Quaternion rayDirection = Quaternion.Euler(-maxVisionDistance - rowIncrement * j * j, angle, 0);
+                    // Calculate direction for each ray within the specified range, slightly angled downwards
+                Vector3 rayDirection = Quaternion.AngleAxis(angle, transform.up) * Quaternion.AngleAxis(maxVisionDistance + rowIncrement * j * j, transform.right) * transform.forward;
+            
                 rays.Add(rayDirection);
             }
         }
@@ -55,7 +55,7 @@ public class KaneSystem : MonoBehaviour
     {
         for (int i = 0; i < mainVisionRays.Length; i++)
         {
-            Vector3 rayDirection = mainVisionRays[i] * transform.forward;
+            Vector3 rayDirection = mainVisionRays[i];
             RaycastHit hit;
             Vector3 rayOrigin = transform.position + transform.up * rayHeight;
             if (Physics.Raycast(rayOrigin, rayDirection, out hit))
@@ -65,7 +65,6 @@ public class KaneSystem : MonoBehaviour
                     if (i < mainVisionRays.Length / 2)
                     {
                         Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.red);   
-                        Debug.Log(1f / ((float)mainVisionRays.Length / 2f));
                         steeringAngle += 0.5f / ((float)mainVisionRays.Length / 2f);
                     }    
                     else
@@ -82,8 +81,10 @@ public class KaneSystem : MonoBehaviour
             else
                 Debug.DrawRay(rayOrigin, rayDirection * 100, Color.black);   
         }
-        CarController.Instance.SetSteeringInput(steeringAngle);
 
+        if (CarController.Instance)
+            CarController.Instance.SetSteeringInput(steeringAngle);
+        
         steeringAngle *= steeringCenterRate;
         if (Mathf.Abs(steeringAngle) < 0.05f)
             steeringAngle = 0;
