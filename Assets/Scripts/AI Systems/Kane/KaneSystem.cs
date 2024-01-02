@@ -30,7 +30,7 @@ public class KaneSystem : MonoBehaviour
     private Vector3[] speedRays;
     public int speedRowCount = 12;
     public float speedRowIncrement = 0.5f;
-
+    public float speedHalfFOV = 3f;
 
     private Rigidbody rb;
 
@@ -49,7 +49,7 @@ public class KaneSystem : MonoBehaviour
         float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
         float topSpeed = 35f;
         float normalisedSpeed = forwardVelocity / topSpeed;
-        speedRays = CalculateRays(6, 3f, speedRowCount,  0.2f, speedRowIncrement, speedRayDistance + (1.5f * (1f - normalisedSpeed)));
+        speedRays = CalculateRays(12, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayDistance + (1.5f * (1f - normalisedSpeed)));
         ControlCar();
     }
 
@@ -91,7 +91,7 @@ public class KaneSystem : MonoBehaviour
             CarController.Instance.SetSteeringInput(steeringAngle);
             CarController.Instance.SetThrottleInput(speedInput);
             float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
-            Debug.Log("velos " + forwardVelocity.ToString());
+            // Debug.Log("velos " + forwardVelocity.ToString());
             CarController.Instance.SetBrakeInput((1-speedInput));
             if (forwardVelocity > 10f)
             {
@@ -102,11 +102,18 @@ public class KaneSystem : MonoBehaviour
             {
                 CarController.Instance.SetBrakeInput(0);
             }
+            Debug.Log(steeringAngle);
+
+            if (MathF.Abs(steeringAngle) > 1.4)
+                CarController.Instance.SetHandbrake(true);
+            else
+                CarController.Instance.SetHandbrake(false);
 
             // Debug.Log("Throt " +CarController.Instance.throttleInput.ToString());
             // Debug.Log("brake " + CarController.Instance.brakeInput.ToString());
         }
         
+        // steeringAngle = 0f;
         steeringAngle *= steeringCenterRate;
         if (Mathf.Abs(steeringAngle) < 0.05f)
             steeringAngle = 0;
@@ -129,12 +136,12 @@ public class KaneSystem : MonoBehaviour
                     if (i < steeringRays.Length / 2)
                     {
                         Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.cyan);   
-                        steeringInput += 0.5f / (((float)steeringRays.Length / 2f));
+                        steeringInput += 0.45f / (((float)steeringRays.Length / 2f));
                     }    
                     else
                     {
                         Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.blue);   
-                        steeringInput -= 0.5f / (((float)steeringRays.Length / 2f));
+                        steeringInput -= 0.45f / (((float)steeringRays.Length / 2f));
                     }
                 }
                 else
@@ -173,6 +180,7 @@ public class KaneSystem : MonoBehaviour
             }
             else
                 Debug.DrawRay(rayOrigin, rayDirection * 100, Color.black);   
+                throttleInput += 0.1f / (float)speedRays.Length;
         }
 
         return throttleInput;

@@ -16,12 +16,12 @@ public class StageTimer : MonoBehaviour
                 carInsideTrigger = true;
                 prevTime = timer;
                 timer = 0f; // Reset the timer when the car enters the trigger
-                Debug.Log("Car entered the trigger. Timer started.");
+                Debug.Log("Timer started.");
             }
             else
             {
                 carInsideTrigger = false;
-                Debug.Log("Car entered the trigger again. Timer stopped. Total time: " + timer.ToString("F2") + " seconds.");
+                Debug.Log("Timer stopped. Total time: " + timer.ToString("F2") + " seconds.");
             }
         }
     }
