@@ -3,7 +3,6 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     public static CarController Instance { get; private set; }
-
     public float steeringInput { get; private set; }
     public float throttleInput { get; private set; }
     public float brakeInput { get; private set; }

@@ -41,8 +41,8 @@ public class KaneSystem : MonoBehaviour
             float angle = i * (halfFieldOfView * 2f / (visionRaysCount - 1)) - halfFieldOfView; // Calculate angle within the specified range
             for (int j = 0; j < rowCount; j++)
             {
-                    // Calculate direction for each ray within the specified range, slightly angled downwards
-                Vector3 rayDirection = Quaternion.AngleAxis(angle, transform.up) * Quaternion.AngleAxis(maxVisionDistance + rowIncrement * j * j, transform.right) * transform.forward;
+                // Calculate direction for each ray within the specified range, slightly angled downwards
+                Vector3 rayDirection = Quaternion.AngleAxis(angle + Mathf.Sign(angle) * 1.5f * j, transform.up) * Quaternion.AngleAxis(maxVisionDistance + rowIncrement * j * j, transform.right) * transform.forward;
             
                 rays.Add(rayDirection);
             }
@@ -53,6 +53,8 @@ public class KaneSystem : MonoBehaviour
 
     void ControlCar()
     {
+        int nonRoadHits = 0;
+
         for (int i = 0; i < mainVisionRays.Length; i++)
         {
             Vector3 rayDirection = mainVisionRays[i];
@@ -62,15 +64,16 @@ public class KaneSystem : MonoBehaviour
             {
                 if (hit.collider.tag != "road")
                 {
+                    nonRoadHits++;
                     if (i < mainVisionRays.Length / 2)
                     {
                         Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.red);   
-                        steeringAngle += 0.5f / ((float)mainVisionRays.Length / 2f);
+                        steeringAngle += 0.5f / (((float)mainVisionRays.Length / 2f));
                     }    
                     else
                     {
                         Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.blue);   
-                        steeringAngle -= 0.5f / ((float)mainVisionRays.Length / 2f);
+                        steeringAngle -= 0.5f / (((float)mainVisionRays.Length / 2f));
                     }
                 }
                 else
@@ -83,10 +86,28 @@ public class KaneSystem : MonoBehaviour
         }
 
         if (CarController.Instance)
+        {
             CarController.Instance.SetSteeringInput(steeringAngle);
+            CarController.Instance.SetThrottleInput(1 - ((nonRoadHits * 1.5f) / mainVisionRays.Length));
+            float brakeInput = CalculateBrakeInput(nonRoadHits, mainVisionRays.Length);
+            Debug.Log(brakeInput);
+            // CarController.Instance.SetBrakeInput(brakeInput);
+        }
         
         steeringAngle *= steeringCenterRate;
         if (Mathf.Abs(steeringAngle) < 0.05f)
             steeringAngle = 0;
+    }
+
+    float CalculateBrakeInput(int nonRoadHits, int totalRaysCount)
+    {
+        return (float)nonRoadHits / totalRaysCount;
+        // float ratio = (float)nonRoadHits / totalRaysCount;
+        // float exponent = 2.0f;
+
+        // // Exponential function to control the growth of BrakeInput based on the ratio
+        // float brakeInput = Mathf.Pow(ratio, exponent);
+
+        // return brakeInput;
     }
 }
