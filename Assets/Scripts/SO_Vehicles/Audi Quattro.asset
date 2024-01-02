@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suspensionRestDist: 0.06
   maxSpringStretch: 0.17
-  springStregth: 6200
-  springDamper: 100
+  springStregth: 8200
+  springDamper: 300
   allWheelDrive: 1
   tireRadius: 0.34
   frontTireGrip: 1.5
