@@ -28,6 +28,7 @@ public class KaneSystem : MonoBehaviour
     public float speedRayDistance = 1.4f;
     [SerializeField]
     private Vector3[] speedRays;
+    public int speedRayCount = 6;
     public int speedRowCount = 12;
     public float speedRowIncrement = 0.5f;
     public float speedHalfFOV = 3f;
@@ -44,7 +45,7 @@ public class KaneSystem : MonoBehaviour
 
     void Update()
     {
-        steeringRays = CalculateRays(steeringRayCount, halfFieldOfView, rowCount, 3f, rowIncrement, steeringRayDistance);
+        steeringRays = CalculateRays(steeringRayCount, halfFieldOfView, rowCount, 3.5f, rowIncrement, steeringRayDistance);
 
         // Change ray aim based on speed, higher speed aims further away
         float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
@@ -55,7 +56,7 @@ public class KaneSystem : MonoBehaviour
         if (Mathf.Abs(NormalizeAngle(gameObject.transform.localEulerAngles.x)) > 1)
             speedRayAngle += MathF.Min(Mathf.Abs(NormalizeAngle(gameObject.transform.localEulerAngles.x)) / 12 * 6f, 6f);
 
-        speedRays = CalculateRays(12, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayAngle);
+        speedRays = CalculateRays(speedRayCount, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayAngle);
         ControlCar();
     }
     float NormalizeAngle(float angle)
@@ -115,7 +116,7 @@ public class KaneSystem : MonoBehaviour
             CarController.Instance.SetBrakeInput((1-speedInput));
             if (forwardVelocity > 10f)
             {
-                if ((1-speedInput) > 0.33f && Mathf.Abs(steeringAngle) < 0.2)
+                if ((1-speedInput) > 0.33f)
                     CarController.Instance.SetBrakeInput(1f);
             }
             else
@@ -128,7 +129,6 @@ public class KaneSystem : MonoBehaviour
             else
                 CarController.Instance.SetHandbrake(false);
         }
-        
         // steeringAngle = 0f;
         steeringAngle *= steeringCenterRate;
         if (Mathf.Abs(steeringAngle) < 0.05f)
