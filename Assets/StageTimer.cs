@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class StageTimer : MonoBehaviour
@@ -6,6 +8,8 @@ public class StageTimer : MonoBehaviour
     [SerializeField]
     private float timer = 0f;
     public float prevTime = 0f;
+
+    public TMP_Text clockText;
 
     void OnTriggerEnter(Collider other)
     {
@@ -31,7 +35,16 @@ public class StageTimer : MonoBehaviour
         if (carInsideTrigger)
         {
             timer += Time.deltaTime;
+            clockText.text = FormatTime(timer); 
         }
+
+    }
+
+    // Format time in "00:00" format
+    string FormatTime(float timeInSeconds)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(timeInSeconds);
+        return string.Format("{0:00}:{1:00}:{2:000}", time.Minutes, time.Seconds, time.Milliseconds);
     }
 }
 
