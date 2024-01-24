@@ -28,7 +28,7 @@ public class CarController : MonoBehaviour
 
     public void SetBrakeInput(float value)
     {
-        brakeInput = Mathf.Clamp(value, -1f, 0f);
+        brakeInput = Mathf.Clamp(value, -1f, 1f);
     }
 
     public void SetHandbrake(bool value)

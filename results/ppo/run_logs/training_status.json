@@ -2,22 +2,22 @@
     "AbelBehavior": {
         "checkpoints": [
             {
-                "steps": 55631,
-                "file_path": "results\\ppo\\AbelBehavior\\AbelBehavior-55631.onnx",
+                "steps": 15883,
+                "file_path": "results\\ppo\\AbelBehavior\\AbelBehavior-15883.onnx",
                 "reward": null,
-                "creation_time": 1706101975.8175042,
+                "creation_time": 1706103578.4767325,
                 "auxillary_file_paths": [
-                    "results\\ppo\\AbelBehavior\\AbelBehavior-55631.pt"
+                    "results\\ppo\\AbelBehavior\\AbelBehavior-15883.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 55631,
+            "steps": 15883,
             "file_path": "results\\ppo\\AbelBehavior.onnx",
             "reward": null,
-            "creation_time": 1706101975.8175042,
+            "creation_time": 1706103578.4767325,
             "auxillary_file_paths": [
-                "results\\ppo\\AbelBehavior\\AbelBehavior-55631.pt"
+                "results\\ppo\\AbelBehavior\\AbelBehavior-15883.pt"
             ]
         }
     },

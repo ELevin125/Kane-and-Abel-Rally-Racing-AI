@@ -90,7 +90,7 @@ public class AbelProto : Agent
         ActionSegment<float> continuousActions =  actionsOut.ContinuousActions;
         float verticalInput = Input.GetAxisRaw("Vertical");
         continuousActions[0] = Mathf.Max(verticalInput, 0);
-        continuousActions[1] = Mathf.Min(verticalInput, 0);
+        continuousActions[1] = -Mathf.Min(verticalInput, 0);
         continuousActions[2] = Input.GetAxisRaw("Horizontal");
     }
 
