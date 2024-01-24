@@ -14,17 +14,32 @@ public class Checkpoint : MonoBehaviour
     [SerializeField]
     private Material triggeredMat;
 
+
+    public delegate void CheckpointTriggeredEventHandler();
+    public static event CheckpointTriggeredEventHandler OnCheckpointTriggered;
+
     void Awake()
     {
         tf = transform;
     }
 
-    void OnTriggerEnter(Collider other)
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.tag == "car")
+    //     {
+    //         Trigger();
+    //     }
+    // }
+
+    public void Trigger()
     {
-        if (other.tag == "car")
+        triggered = true;
+        renderer.material = triggeredMat;
+
+        // Invoke the event when triggered
+        if (OnCheckpointTriggered != null)
         {
-            triggered = true;
-            renderer.material = triggeredMat;
+            OnCheckpointTriggered();
         }
     }
 

@@ -12,7 +12,7 @@ public class CheckpointSystem : MonoBehaviour
     {
         while (checkpoints[targetCheckpoint].triggered)
         {
-            if (targetCheckpoint == checkpoints.Length)
+            if (targetCheckpoint >= checkpoints.Length - 1)
             {
                 ResetCheckpoints();
                 targetCheckpoint = 0;
