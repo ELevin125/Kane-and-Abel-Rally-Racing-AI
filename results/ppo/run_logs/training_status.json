@@ -1,23 +1,23 @@
 {
-    "My Behavior": {
+    "AbelBehavior": {
         "checkpoints": [
             {
-                "steps": 19256,
-                "file_path": "results\\ppo\\My Behavior\\My Behavior-19256.onnx",
-                "reward": 0.36231884057971014,
-                "creation_time": 1706081781.487882,
+                "steps": 5582,
+                "file_path": "results\\ppo\\AbelBehavior\\AbelBehavior-5582.onnx",
+                "reward": -0.5555555555555556,
+                "creation_time": 1706096896.0259986,
                 "auxillary_file_paths": [
-                    "results\\ppo\\My Behavior\\My Behavior-19256.pt"
+                    "results\\ppo\\AbelBehavior\\AbelBehavior-5582.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 19256,
-            "file_path": "results\\ppo\\My Behavior.onnx",
-            "reward": 0.36231884057971014,
-            "creation_time": 1706081781.487882,
+            "steps": 5582,
+            "file_path": "results\\ppo\\AbelBehavior.onnx",
+            "reward": -0.5555555555555556,
+            "creation_time": 1706096896.0259986,
             "auxillary_file_paths": [
-                "results\\ppo\\My Behavior\\My Behavior-19256.pt"
+                "results\\ppo\\AbelBehavior\\AbelBehavior-5582.pt"
             ]
         }
     },

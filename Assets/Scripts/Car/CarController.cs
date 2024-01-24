@@ -35,4 +35,12 @@ public class CarController : MonoBehaviour
     {
         handbrake = value;
     }
+
+    public void ResetInputs()
+    {
+        steeringInput = 0f;
+        throttleInput = 0f;
+        brakeInput = 0f;
+        handbrake = false;
+    }
 }

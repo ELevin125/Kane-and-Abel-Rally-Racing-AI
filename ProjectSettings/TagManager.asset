@@ -7,6 +7,8 @@ TagManager:
   - wheel
   - road
   - car
+  - checkpoint
+  - offroad
   layers:
   - Default
   - TransparentFX
