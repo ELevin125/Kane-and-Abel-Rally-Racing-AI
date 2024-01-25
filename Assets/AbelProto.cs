@@ -129,7 +129,7 @@ public class AbelProto : Agent
             Checkpoint cp = other.gameObject.GetComponent<Checkpoint>();
             if (cp.triggered == false)
             {
-                cp.Trigger();
+                checkpoints.TriggerNext(cp);
 
                 Vector3 triggerForwardDirection = other.transform.forward;
                 Vector3 enteringDirection = other.transform.position - transform.position;

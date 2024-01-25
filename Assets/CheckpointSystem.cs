@@ -24,6 +24,17 @@ public class CheckpointSystem : MonoBehaviour
         return checkpoints[targetCheckpoint].tf;
     }
 
+    public void TriggerNext(Checkpoint cp)
+    {
+        cp.Trigger();
+        targetCheckpoint++;
+        if (targetCheckpoint >= checkpoints.Length - 1)
+        {
+            targetCheckpoint = 0;
+            ResetCheckpoints();
+        }
+    }
+
     public void ResetCheckpoints()
     {
         foreach(Checkpoint c in checkpoints)
