@@ -1,0 +1,38 @@
+{
+    "AbelBehavior": {
+        "checkpoints": [
+            {
+                "steps": 499985,
+                "file_path": "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-499985.onnx",
+                "reward": null,
+                "creation_time": 1706273172.981689,
+                "auxillary_file_paths": [
+                    "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-499985.pt"
+                ]
+            },
+            {
+                "steps": 500049,
+                "file_path": "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-500049.onnx",
+                "reward": null,
+                "creation_time": 1706273173.0202212,
+                "auxillary_file_paths": [
+                    "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-500049.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500049,
+            "file_path": "results\\advanced_stabilised\\AbelBehavior.onnx",
+            "reward": null,
+            "creation_time": 1706273173.0202212,
+            "auxillary_file_paths": [
+                "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-500049.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}
