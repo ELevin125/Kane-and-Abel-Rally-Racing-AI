@@ -24,7 +24,7 @@ public class CheckpointSystem : MonoBehaviour
         return checkpoints[targetCheckpoint].tf;
     }
 
-    public void TriggerNext(Checkpoint cp)
+    public bool TriggerNext(Checkpoint cp)
     {
         cp.Trigger();
         targetCheckpoint++;
@@ -32,7 +32,9 @@ public class CheckpointSystem : MonoBehaviour
         {
             targetCheckpoint = 0;
             ResetCheckpoints();
+            return true;
         }
+        return false;
     }
 
     public void ResetCheckpoints()

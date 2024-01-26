@@ -1,0 +1,38 @@
+{
+    "AbelBehavior": {
+        "checkpoints": [
+            {
+                "steps": 499957,
+                "file_path": "results\\Speed_and_Steer_rays\\AbelBehavior\\AbelBehavior-499957.onnx",
+                "reward": null,
+                "creation_time": 1706169005.7622666,
+                "auxillary_file_paths": [
+                    "results\\Speed_and_Steer_rays\\AbelBehavior\\AbelBehavior-499957.pt"
+                ]
+            },
+            {
+                "steps": 500021,
+                "file_path": "results\\Speed_and_Steer_rays\\AbelBehavior\\AbelBehavior-500021.onnx",
+                "reward": null,
+                "creation_time": 1706169005.821017,
+                "auxillary_file_paths": [
+                    "results\\Speed_and_Steer_rays\\AbelBehavior\\AbelBehavior-500021.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500021,
+            "file_path": "results\\Speed_and_Steer_rays\\AbelBehavior.onnx",
+            "reward": null,
+            "creation_time": 1706169005.821017,
+            "auxillary_file_paths": [
+                "results\\Speed_and_Steer_rays\\AbelBehavior\\AbelBehavior-500021.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}

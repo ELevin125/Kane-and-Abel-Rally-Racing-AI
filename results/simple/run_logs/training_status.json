@@ -1,0 +1,47 @@
+{
+    "AbelBehavior": {
+        "checkpoints": [
+            {
+                "steps": 499946,
+                "file_path": "results\\simple\\AbelBehavior\\AbelBehavior-499946.onnx",
+                "reward": null,
+                "creation_time": 1706174126.950259,
+                "auxillary_file_paths": [
+                    "results\\simple\\AbelBehavior\\AbelBehavior-499946.pt"
+                ]
+            },
+            {
+                "steps": 500010,
+                "file_path": "results\\simple\\AbelBehavior\\AbelBehavior-500010.onnx",
+                "reward": null,
+                "creation_time": 1706174126.9937308,
+                "auxillary_file_paths": [
+                    "results\\simple\\AbelBehavior\\AbelBehavior-500010.pt"
+                ]
+            },
+            {
+                "steps": 500010,
+                "file_path": "results\\simple\\AbelBehavior\\AbelBehavior-500010.onnx",
+                "reward": null,
+                "creation_time": 1706175145.5532513,
+                "auxillary_file_paths": [
+                    "results\\simple\\AbelBehavior\\AbelBehavior-500010.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500010,
+            "file_path": "results\\simple\\AbelBehavior.onnx",
+            "reward": null,
+            "creation_time": 1706175145.5532513,
+            "auxillary_file_paths": [
+                "results\\simple\\AbelBehavior\\AbelBehavior-500010.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}

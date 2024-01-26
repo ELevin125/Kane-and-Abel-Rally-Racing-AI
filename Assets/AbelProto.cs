@@ -35,6 +35,7 @@ public class AbelProto : Agent
 
     void FixedUpdate()
     {
+        // AddReward(-0.001f);
         if (timeOffroad > maxTimeOffroad)
         {
             AddReward(-3);
@@ -129,7 +130,9 @@ public class AbelProto : Agent
             Checkpoint cp = other.gameObject.GetComponent<Checkpoint>();
             if (cp.triggered == false)
             {
-                checkpoints.TriggerNext(cp);
+                bool complete = checkpoints.TriggerNext(cp);
+                if (complete)
+                    AddReward(10);
 
                 Vector3 triggerForwardDirection = other.transform.forward;
                 Vector3 enteringDirection = other.transform.position - transform.position;
