@@ -149,7 +149,11 @@ public class AbelProto : Agent
                 timeSinceLastCheckpoint = 0;
                 bool complete = checkpoints.TriggerNext(cp);
                 if (complete)
+                {
                     AddReward(10);
+                    if (timeSinceLastCheckpoint < 2)
+                        AddReward(2f - timeSinceLastCheckpoint);
+                }
 
                 Vector3 triggerForwardDirection = other.transform.forward;
                 Vector3 enteringDirection = other.transform.position - transform.position;

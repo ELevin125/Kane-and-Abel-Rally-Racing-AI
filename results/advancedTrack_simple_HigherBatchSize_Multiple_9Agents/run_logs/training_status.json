@@ -1,0 +1,65 @@
+{
+    "AbelBehavior": {
+        "checkpoints": [
+            {
+                "steps": 499971,
+                "file_path": "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-499971.onnx",
+                "reward": 0.3143552677809364,
+                "creation_time": 1706538978.780646,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-499971.pt"
+                ]
+            },
+            {
+                "steps": 999976,
+                "file_path": "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-999976.onnx",
+                "reward": 5.2988979066722095,
+                "creation_time": 1706539376.6130037,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-999976.pt"
+                ]
+            },
+            {
+                "steps": 1499954,
+                "file_path": "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-1499954.onnx",
+                "reward": 138.9211251186207,
+                "creation_time": 1706539772.6404433,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-1499954.pt"
+                ]
+            },
+            {
+                "steps": 1999939,
+                "file_path": "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-1999939.onnx",
+                "reward": 96.35707907526132,
+                "creation_time": 1706540175.5679007,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-1999939.pt"
+                ]
+            },
+            {
+                "steps": 2000003,
+                "file_path": "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-2000003.onnx",
+                "reward": 96.35707907526132,
+                "creation_time": 1706540175.6021078,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-2000003.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2000003,
+            "file_path": "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior.onnx",
+            "reward": 96.35707907526132,
+            "creation_time": 1706540175.6021078,
+            "auxillary_file_paths": [
+                "results\\advancedTrack_simple_HigherBatchSize_Multiple_9Agents\\AbelBehavior\\AbelBehavior-2000003.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}
