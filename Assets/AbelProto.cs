@@ -75,7 +75,6 @@ public class AbelProto : Agent
         float speed = normalVelocity.magnitude;
         sensor.AddObservation(speed);
 
-        sensor.AddObservation(transform.rotation.eulerAngles.y / 180);
         sensor.AddObservation(transform.rotation.eulerAngles.x / 180);
 
         switch (collidedTag)
