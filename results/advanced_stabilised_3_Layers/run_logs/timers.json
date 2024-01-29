@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1706519033",
+        "python_version": "3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)]",
+        "command_line_arguments": "D:\\UnityProjects\\Final Project - Kane and Abel\\venv\\Scripts\\mlagents-learn ./Config/AbelBehavior.yaml --run-id=advanced_stabilised_3_Layers --force",
+        "mlagents_version": "1.0.0",
+        "mlagents_envs_version": "1.0.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.13.1+cpu",
+        "numpy_version": "1.23.1",
+        "end_time_seconds": "1706519037"
+    },
+    "total": 4.0999228000000585,
+    "count": 1,
+    "self": 0.005357799993362278,
+    "children": {
+        "run_training.setup": {
+            "total": 0.06143339999835007,
+            "count": 1,
+            "self": 0.06143339999835007
+        },
+        "TrainerController.start_learning": {
+            "total": 4.033131600008346,
+            "count": 1,
+            "self": 0.0002800000074785203,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 4.032844400004251,
+                    "count": 1,
+                    "self": 4.032844400004251
+                },
+                "trainer_threads": {
+                    "total": 7.00005330145359e-07,
+                    "count": 1,
+                    "self": 7.00005330145359e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 6.499991286545992e-06,
+                    "count": 1,
+                    "self": 6.499991286545992e-06
+                }
+            }
+        }
+    }
+}

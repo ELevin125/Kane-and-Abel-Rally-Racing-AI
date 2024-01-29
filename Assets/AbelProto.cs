@@ -84,11 +84,11 @@ public class AbelProto : Agent
         // float directionDot = Vector3.Dot(transform.forward, checkpointForward);
         // sensor.AddObservation(directionDot);
         Vector3 normalVelocity = rb.velocity.normalized;
-        sensor.AddObservation(normalVelocity);
+        // sensor.AddObservation(normalVelocity);
         float speed = normalVelocity.magnitude;
         sensor.AddObservation(speed);
 
-        sensor.AddObservation(transform.rotation.eulerAngles.x / 180);
+        // sensor.AddObservation(transform.rotation.eulerAngles.x / 180);
 
         switch (collidedTag)
         {
@@ -175,6 +175,7 @@ public class AbelProto : Agent
         else if (other.gameObject.tag == "offroad")
         {
             EndEpisode();
+            AddReward(-1f);
         }
     }
 }
