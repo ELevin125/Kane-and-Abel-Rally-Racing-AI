@@ -23,13 +23,10 @@ public class Checkpoint : MonoBehaviour
         tf = transform;
     }
 
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.tag == "car")
-    //     {
-    //         Trigger();
-    //     }
-    // }
+    public void ChangeMaterial(Material targetMat)
+    {
+        renderer.material = targetMat;
+    }
 
     public void Trigger()
     {

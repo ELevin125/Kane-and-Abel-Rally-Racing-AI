@@ -1,0 +1,47 @@
+{
+    "AbelBehavior": {
+        "checkpoints": [
+            {
+                "steps": 499956,
+                "file_path": "results\\advanced_stabilised_rotation_staged\\AbelBehavior\\AbelBehavior-499956.onnx",
+                "reward": null,
+                "creation_time": 1706280481.3792653,
+                "auxillary_file_paths": [
+                    "results\\advanced_stabilised_rotation_staged\\AbelBehavior\\AbelBehavior-499956.pt"
+                ]
+            },
+            {
+                "steps": 999969,
+                "file_path": "results\\advanced_stabilised_rotation_staged\\AbelBehavior\\AbelBehavior-999969.onnx",
+                "reward": null,
+                "creation_time": 1706282530.0434463,
+                "auxillary_file_paths": [
+                    "results\\advanced_stabilised_rotation_staged\\AbelBehavior\\AbelBehavior-999969.pt"
+                ]
+            },
+            {
+                "steps": 1263897,
+                "file_path": "results\\advanced_stabilised_rotation_staged\\AbelBehavior\\AbelBehavior-1263897.onnx",
+                "reward": null,
+                "creation_time": 1706283623.3550878,
+                "auxillary_file_paths": [
+                    "results\\advanced_stabilised_rotation_staged\\AbelBehavior\\AbelBehavior-1263897.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1263897,
+            "file_path": "results\\advanced_stabilised_rotation_staged\\AbelBehavior.onnx",
+            "reward": null,
+            "creation_time": 1706283623.3550878,
+            "auxillary_file_paths": [
+                "results\\advanced_stabilised_rotation_staged\\AbelBehavior\\AbelBehavior-1263897.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}
