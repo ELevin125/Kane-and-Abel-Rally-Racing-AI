@@ -159,5 +159,9 @@ public class AbelProto : Agent
                 EndEpisode();
             }
         }
+        else if (other.gameObject.tag == "offroad")
+        {
+            EndEpisode();
+        }
     }
 }
