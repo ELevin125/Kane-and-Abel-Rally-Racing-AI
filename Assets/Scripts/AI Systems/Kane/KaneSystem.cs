@@ -35,10 +35,16 @@ public class KaneSystem : MonoBehaviour
 
     private Rigidbody rb;
 
-    void Start()
+    private CarController carController;
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        carController = GetComponent<CarController>();
+    }
 
+    void Start()
+    {
         if (steeringRayCount % 2 != 0)
             Debug.LogError("Should have an even amount of rays");
     }
@@ -107,28 +113,28 @@ public class KaneSystem : MonoBehaviour
 
         float speedInput = CalculateSpeedInput();
 
-        if (CarController.Instance)
+        if (carController)
         {
             
-            CarController.Instance.SetSteeringInput(steeringAngle);
-            CarController.Instance.SetThrottleInput(speedInput);
+            carController.SetSteeringInput(steeringAngle);
+            carController.SetThrottleInput(speedInput);
             float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
 
-            CarController.Instance.SetBrakeInput((1-speedInput));
+            carController.SetBrakeInput((1-speedInput));
             if (forwardVelocity > 10f)
             {
                 if ((1-speedInput) > 0.33f)
-                    CarController.Instance.SetBrakeInput(1f);
+                    carController.SetBrakeInput(1f);
             }
             else
             {
-                CarController.Instance.SetBrakeInput(0);
+                carController.SetBrakeInput(0);
             }
 
             if (MathF.Abs(steeringAngle) > 1.3)
-                CarController.Instance.SetHandbrake(true);
+                carController.SetHandbrake(true);
             else
-                CarController.Instance.SetHandbrake(false);
+                carController.SetHandbrake(false);
         }
         // steeringAngle = 0f;
         steeringAngle *= steeringCenterRate;

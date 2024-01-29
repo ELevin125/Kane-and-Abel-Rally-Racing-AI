@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    public static CarController Instance { get; private set; }
+    // public static CarController Instance { get; private set; }
     public float steeringInput { get; private set; }
     public float throttleInput { get; private set; }
     public float brakeInput { get; private set; }
     public bool handbrake { get; private set; }
 
-    void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
+    // void Awake()
+    // {
+    //     if (Instance == null)
+    //         Instance = this;
+    //     else
+    //         Destroy(gameObject);
+    // }
 
     public void SetSteeringInput(float angle)
     {

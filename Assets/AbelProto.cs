@@ -76,6 +76,8 @@ public class AbelProto : Agent
             default:
                 break;
         }
+
+        AddReward(-0.0001f);
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -171,11 +173,6 @@ public class AbelProto : Agent
                 AddReward(-3f);
                 EndEpisode();
             }
-        }
-        else if (other.gameObject.tag == "offroad")
-        {
-            EndEpisode();
-            AddReward(-1f);
         }
     }
 }
