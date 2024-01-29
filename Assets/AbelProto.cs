@@ -7,6 +7,8 @@ using Unity.MLAgents.Sensors;
 
 public class AbelProto : Agent
 {
+    private float timeSinceLastCheckpoint = 0;
+    public float maxTimeSinceLastCheckpoint = 15; 
     private float timeOffroad = 0;
     public float maxTimeOffroad = 240;
     public Transform startPos;
@@ -25,6 +27,7 @@ public class AbelProto : Agent
     public override void OnEpisodeBegin()
     {
         timeOffroad = 0;
+        timeSinceLastCheckpoint = 0; 
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         CarController.Instance.ResetInputs();
@@ -41,6 +44,14 @@ public class AbelProto : Agent
             AddReward(-3);
             EndEpisode();
         }
+
+        if (timeSinceLastCheckpoint > maxTimeSinceLastCheckpoint)
+        {
+            AddReward(-1);
+            EndEpisode();
+        }
+
+        timeSinceLastCheckpoint += Time.fixedDeltaTime;  // Update the timer
 
         Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit hit;
@@ -131,6 +142,7 @@ public class AbelProto : Agent
             Checkpoint cp = other.gameObject.GetComponent<Checkpoint>();
             if (cp.triggered == false)
             {
+                timeSinceLastCheckpoint = 0;
                 bool complete = checkpoints.TriggerNext(cp);
                 if (complete)
                     AddReward(10);

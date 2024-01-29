@@ -2,31 +2,22 @@
     "AbelBehavior": {
         "checkpoints": [
             {
-                "steps": 499985,
-                "file_path": "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-499985.onnx",
+                "steps": 77458,
+                "file_path": "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-77458.onnx",
                 "reward": null,
-                "creation_time": 1706273172.981689,
+                "creation_time": 1706516303.1221347,
                 "auxillary_file_paths": [
-                    "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-499985.pt"
-                ]
-            },
-            {
-                "steps": 500049,
-                "file_path": "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-500049.onnx",
-                "reward": null,
-                "creation_time": 1706273173.0202212,
-                "auxillary_file_paths": [
-                    "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-500049.pt"
+                    "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-77458.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 500049,
+            "steps": 77458,
             "file_path": "results\\advanced_stabilised\\AbelBehavior.onnx",
             "reward": null,
-            "creation_time": 1706273173.0202212,
+            "creation_time": 1706516303.1221347,
             "auxillary_file_paths": [
-                "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-500049.pt"
+                "results\\advanced_stabilised\\AbelBehavior\\AbelBehavior-77458.pt"
             ]
         }
     },
