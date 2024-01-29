@@ -41,6 +41,15 @@ public class WheelForces : MonoBehaviour
 
     private float normalizedSpeed = 0.0f;
     
+    private CarController carController;
+    void Awake()
+    {
+        Transform carRoot = VehicleHelper.FindCarRoot(transform);
+        if (carRoot == null)
+            throw new System.Exception("Could not find root of car");
+        carController = carRoot.GetComponent<CarController>();
+    }
+
     private void Start()
     {
         // Grab rigidbody from grandparent
@@ -121,7 +130,7 @@ public class WheelForces : MonoBehaviour
 
         float understeerPenalty = Mathf.Clamp01(1 - normalizedSpeed + 0.2f);
         float desiredVelChange = -steeringVel * tireGrip * understeerPenalty;
-        desiredVelChange = CarController.Instance.handbrake ? desiredVelChange * tireGripHandbrakeLoss : desiredVelChange;
+        desiredVelChange = carController.handbrake ? desiredVelChange * tireGripHandbrakeLoss : desiredVelChange;
 
         float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
 
@@ -131,7 +140,7 @@ public class WheelForces : MonoBehaviour
 
     void Movement()
     {
-        float accelInput = CarController.Instance.throttleInput - CarController.Instance.brakeInput;
+        float accelInput = carController.throttleInput - carController.brakeInput;
 
         Vector3 accelDir = transform.forward;
         if (!Mathf.Approximately(accelInput, 0))
@@ -146,7 +155,7 @@ public class WheelForces : MonoBehaviour
 
     void RotateWheels()
     {
-        float accelInput = CarController.Instance.throttleInput - CarController.Instance.brakeInput;
+        float accelInput = carController.throttleInput - carController.brakeInput;
         float vehicleSpeed = rb.GetPointVelocity(transform.position).magnitude;
         // creates fake wheelspin, and prevents the powered wheels from not spinning if they are not on the ground
         vehicleSpeed = powered ? Mathf.Max(vehicleSpeed, 1) * 2.0f : vehicleSpeed * 2.0f; 

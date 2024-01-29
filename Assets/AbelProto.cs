@@ -19,9 +19,11 @@ public class AbelProto : Agent
 
     private Rigidbody rb;
 
+    private CarController carController;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        carController = GetComponent<CarController>();
     }
 
     public override void OnEpisodeBegin()
@@ -30,7 +32,7 @@ public class AbelProto : Agent
         timeSinceLastCheckpoint = 0; 
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        CarController.Instance.ResetInputs();
+        carController.ResetInputs();
         checkpoints.ResetCheckpoints();
         transform.position = startPos.position;
         transform.rotation = startPos.rotation;
@@ -120,11 +122,11 @@ public class AbelProto : Agent
 
         // Debug.Log("Brake " + brakeInput.ToString());
         // Debug.Log("Throttle " + throttleInput.ToString());
-        if (CarController.Instance)
+        if (carController)
         {
-            CarController.Instance.SetThrottleInput(throttleInput);
-            CarController.Instance.SetBrakeInput(brakeInput);
-            CarController.Instance.SetSteeringInput(steeringInput);
+            carController.SetThrottleInput(throttleInput);
+            carController.SetBrakeInput(brakeInput);
+            carController.SetSteeringInput(steeringInput);
         }
     }
 

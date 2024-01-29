@@ -17,7 +17,15 @@ public class Steering : MonoBehaviour
 
     public float minSteer = 0.5f;
 
-
+    private CarController carController;
+    void Awake()
+    {
+        Transform carRoot = VehicleHelper.FindCarRoot(transform);
+        if (carRoot == null)
+            throw new System.Exception("Could not find root of car");
+        carController = carRoot.GetComponent<CarController>();
+    }
+    
     void Start()
     {
         originalRotation = transform.localRotation;
@@ -25,7 +33,7 @@ public class Steering : MonoBehaviour
 
     void FixedUpdate()
     {
-        steeringInput = CarController.Instance.steeringInput;
+        steeringInput = carController.steeringInput;
 
         Quaternion targetRotation = originalRotation;
 
