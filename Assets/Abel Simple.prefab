@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 2012533779702359996}
   - component: {fileID: 3390571780762968527}
   - component: {fileID: 9203659696442360413}
+  - component: {fileID: 352835097399899476}
   m_Layer: 2
   m_Name: Sensors
   m_TagString: Untagged
@@ -467,6 +468,34 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: -1.73
+--- !u!114 &352835097399899476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568340400853425672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: SpeedRaysFar
+  m_DetectableTags:
+  - road
+  - offroad
+  m_RaysPerDirection: 1
+  m_MaxRayDegrees: 14.8
+  m_SphereCastRadius: 0.5
+  m_RayLength: 148
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 0.112679005, g: 1, b: 0, a: 1}
+  m_StartVerticalOffset: 1
+  m_EndVerticalOffset: -2.18
 --- !u!1 &5970849044358769670
 GameObject:
   m_ObjectHideFlags: 0

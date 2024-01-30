@@ -1,0 +1,65 @@
+{
+    "AbelBehavior": {
+        "checkpoints": [
+            {
+                "steps": 3499944,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-3499944.onnx",
+                "reward": 172.61809322843328,
+                "creation_time": 1706602989.0276127,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-3499944.pt"
+                ]
+            },
+            {
+                "steps": 3999948,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-3999948.onnx",
+                "reward": null,
+                "creation_time": 1706603486.4665244,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-3999948.pt"
+                ]
+            },
+            {
+                "steps": 4499979,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-4499979.onnx",
+                "reward": 122.14137555481867,
+                "creation_time": 1706603982.1782928,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-4499979.pt"
+                ]
+            },
+            {
+                "steps": 4999984,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-4999984.onnx",
+                "reward": 84.93657137872651,
+                "creation_time": 1706604481.1806145,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-4999984.pt"
+                ]
+            },
+            {
+                "steps": 5000048,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-5000048.onnx",
+                "reward": 84.93657137872651,
+                "creation_time": 1706604481.224363,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-5000048.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000048,
+            "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior.onnx",
+            "reward": 84.93657137872651,
+            "creation_time": 1706604481.224363,
+            "auxillary_file_paths": [
+                "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork\\AbelBehavior\\AbelBehavior-5000048.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}
