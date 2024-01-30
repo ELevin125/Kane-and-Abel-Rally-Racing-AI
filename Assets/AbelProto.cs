@@ -121,7 +121,7 @@ public class AbelProto : Agent
         float throttleInput = Mathf.Clamp01(actions.ContinuousActions[0]);
         float brakeInput = Mathf.Clamp01(actions.ContinuousActions[1]);
         float steeringInput = actions.ContinuousActions[2];
-        int handbrake = actions.DiscreteActions[0];
+        // int handbrake = actions.DiscreteActions[0];
 
         // Debug.Log("Brake " + brakeInput.ToString());
         // Debug.Log("Throttle " + throttleInput.ToString());
