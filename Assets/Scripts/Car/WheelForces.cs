@@ -110,9 +110,12 @@ public class WheelForces : MonoBehaviour
         Vector3 tireVel = rb.GetPointVelocity(transform.position);
         float offset = trueRestDist - hit.distance;
 
+        // Adjust the position of the wheel object based on the suspension positions
+        // This is purely cosmetic
         wheel.localPosition = new Vector3(0, -(suspensionRestDist - offset), 0);
 
         float velocity = Vector3.Dot(springDir, tireVel);
+        // Calculate the final spring forces for the desired height
         float force = (offset * springStregth) - (velocity * springDamper);
 
         rb.AddForceAtPosition(springDir * force, transform.position);

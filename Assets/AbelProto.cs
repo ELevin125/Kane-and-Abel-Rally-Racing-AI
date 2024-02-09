@@ -142,6 +142,7 @@ public class AbelProto : Agent
 
     private void OnTriggerEnter(Collider other)
     {
+        // make sure that the vehicle is entering a new checkpoint
         if (other.gameObject.tag == "checkpoint" && !insideCheckpoint)
         {
             insideCheckpoint = true;
@@ -153,10 +154,9 @@ public class AbelProto : Agent
                 if (complete)
                 {
                     AddReward(10);
-                    if (timeSinceLastCheckpoint < 2)
-                        AddReward(2f - timeSinceLastCheckpoint);
                 }
 
+                // Calculate from which direction the checkpoint was entered
                 Vector3 triggerForwardDirection = other.transform.forward;
                 Vector3 enteringDirection = other.transform.position - transform.position;
 
@@ -166,9 +166,17 @@ public class AbelProto : Agent
 
                     
                 if (dotProduct > 0)
-                    AddReward(2); // The object entered the trigger from the back
+                {
+                    // The object entered the trigger from the back
+                    AddReward(2);
+                    // Give a larger bonus the faster the time between 
+                    // checkpoints were
+                    if (timeSinceLastCheckpoint < 2)
+                        AddReward(2f - timeSinceLastCheckpoint);
+                }
                 else
                 {
+                    // The object tried to enter from the front / side of checkpoint
                     AddReward(-3);
                     EndEpisode();
                 }
@@ -176,6 +184,7 @@ public class AbelProto : Agent
             }
             else
             {
+                // Entered a checkpoint that has already been triggered
                 AddReward(-3f);
                 EndEpisode();
             }

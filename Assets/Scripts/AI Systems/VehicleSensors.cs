@@ -19,7 +19,11 @@ public static class VehicleSensors
             for (int j = 0; j < rowCount; j++)
             {
                 // Calculate direction for each ray within the specified range, slightly angled downwards
-                Vector3 rayDirection = Quaternion.AngleAxis(angle + Mathf.Sign(angle) * spread * j, tf.up) * Quaternion.AngleAxis(verticalAngle + rowIncrement * j * j, tf.right) * tf.forward;
+                // The direction of the ray direction
+                Quaternion baseDirection = Quaternion.AngleAxis(angle + Mathf.Sign(angle) * spread * j, tf.up);
+                // How close the ray shoots to the vehicle, i.e. the row it will shoot in
+                Quaternion directionForRow = Quaternion.AngleAxis(verticalAngle + rowIncrement * j * j, tf.right);
+                Vector3 rayDirection =  baseDirection * directionForRow * tf.forward;
             
                 rays.Add(rayDirection);
             }

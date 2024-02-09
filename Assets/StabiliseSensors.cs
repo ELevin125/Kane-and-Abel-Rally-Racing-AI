@@ -44,25 +44,23 @@ public class StabiliseSensors : MonoBehaviour
     
     public float yOffset;
     public float raycastAngle = 45f;
-
-    public Transform rotationOffset;
+    public Transform rotationOffset; // the rotation it should have when the terrain is perfectly flat
 
     void Update()
     {
-        // Perform the raycast
         Vector3 rayDirection = Quaternion.AngleAxis(raycastAngle, transform.right) * transform.forward;
         Ray ray = new Ray(transform.position + transform.up * yOffset, rayDirection);
-        // Draw the ray for visualization
+        // Draw the ray for visualisation
         Debug.DrawRay(ray.origin, ray.direction * raycastLength, Color.magenta);
 
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, raycastLength))
         {
             // Get the normal of the terrain at the hit point
+            // i.e. the direction of the road ahead
             Vector3 terrainNormal = hit.normal;
 
             // Calculate the rotation to align with the terrain normal
-            // targetTransform.rotation = Quaternion.FromToRotation(Vector3.up, terrainNormal);
             Quaternion targetRotation = Quaternion.FromToRotation(transform.up, terrainNormal);
 
             // Apply the initial rotation and then adjust based on the terrain normal

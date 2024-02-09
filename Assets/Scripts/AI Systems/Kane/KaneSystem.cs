@@ -111,7 +111,7 @@ public class KaneSystem : MonoBehaviour
         steeringAngle = CalculateSteeringInput(steeringAngle);
 
 
-        float speedInput = CalculateSpeedInput();
+        float speedInput = CalculateSpeedInput(speedRays);
 
         if (carController)
         {
@@ -178,7 +178,10 @@ public class KaneSystem : MonoBehaviour
         return steeringInput;
     }
 
-    float CalculateSpeedInput()
+    // Determine the throttle input based on the raycasts
+    // Each ray contribute a portion to the overall input
+    // i.e. the more rays are offroad, the slower the vehicle will go
+    float CalculateSpeedInput(Vector3[] speedRays)
     {
         float throttleInput = 0f;
 
@@ -196,12 +199,17 @@ public class KaneSystem : MonoBehaviour
                 }
                 else
                 {
+                    // offroad
                     Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.red);   
                 }
             }
             else
+            {
+                // Agent is blind
                 Debug.DrawRay(rayOrigin, rayDirection * 100, Color.black);   
+                // apply a little throttle to hopefully move out of the blind spot
                 throttleInput += 0.1f / (float)speedRays.Length;
+            }
         }
 
         return throttleInput;
