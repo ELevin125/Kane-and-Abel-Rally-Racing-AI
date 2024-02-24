@@ -173,7 +173,7 @@ public class AbelProto : Agent
                     // checkpoints were
                     if (timeSinceLastCheckpoint < 2)
                         AddReward(2f - timeSinceLastCheckpoint);
-                }
+                }   
                 else
                 {
                     // The object tried to enter from the front / side of checkpoint
