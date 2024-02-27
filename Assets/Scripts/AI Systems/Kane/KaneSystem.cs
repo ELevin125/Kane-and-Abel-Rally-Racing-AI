@@ -37,6 +37,8 @@ public class KaneSystem : MonoBehaviour
 
     private CarController carController;
 
+    [SerializeField]
+    private Transform sensorTransform;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -51,7 +53,7 @@ public class KaneSystem : MonoBehaviour
 
     void Update()
     {
-        steeringRays = VehicleSensors.CalculateRays(transform, steeringRayCount, halfFieldOfView, rowCount, 3.5f, rowIncrement, steeringRayDistance);
+        steeringRays = VehicleSensors.CalculateRays(sensorTransform, steeringRayCount, halfFieldOfView, rowCount, 3.5f, rowIncrement, steeringRayDistance);
 
         // // Change ray aim based on speed, higher speed aims further away
         // float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
@@ -63,7 +65,7 @@ public class KaneSystem : MonoBehaviour
         //     speedRayAngle += Mathf.Min(Mathf.Abs(NormalizeAngle(gameObject.transform.localEulerAngles.x)) / 12 * 6f, 6f);
 
         float speedRayAngle = VehicleSensors.CalculateAngleForSpeed(transform, rb, speedRayDistance);
-        speedRays = VehicleSensors.CalculateRays(transform, speedRayCount, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayAngle);
+        speedRays = VehicleSensors.CalculateRays(sensorTransform, speedRayCount, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayAngle);
         ControlCar();
     }
     // float NormalizeAngle(float angle)
@@ -150,7 +152,7 @@ public class KaneSystem : MonoBehaviour
         {
             Vector3 rayDirection = steeringRays[i];
             RaycastHit hit;
-            Vector3 rayOrigin = transform.position + transform.up * rayHeight;
+            Vector3 rayOrigin = sensorTransform.position + sensorTransform.up * rayHeight;
             if (Physics.Raycast(rayOrigin, rayDirection, out hit))
             {
                 if (hit.collider.tag != "road")
@@ -189,7 +191,7 @@ public class KaneSystem : MonoBehaviour
         {
             Vector3 rayDirection = speedRays[i];
             RaycastHit hit;
-            Vector3 rayOrigin = transform.position + transform.up * rayHeight;
+            Vector3 rayOrigin = sensorTransform.position + sensorTransform.up * rayHeight;
             if (Physics.Raycast(rayOrigin, rayDirection, out hit))
             {
                 if (hit.collider.tag == "road")
