@@ -5,8 +5,15 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 
+enum AbelState {
+    training = 0,
+    driving = 1
+}
+
 public class AbelProto : Agent
 {
+    [SerializeField]
+    private AbelState mode;
     private float timeSinceLastCheckpoint = 0;
     public float maxTimeSinceLastCheckpoint = 15; 
     private float timeOffroad = 0;
@@ -20,6 +27,8 @@ public class AbelProto : Agent
     private Rigidbody rb;
 
     private CarController carController;
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -44,13 +53,13 @@ public class AbelProto : Agent
         if (timeOffroad > maxTimeOffroad)
         {
             AddReward(-3);
-            EndEpisode();
+            End();
         }
 
         if (timeSinceLastCheckpoint > maxTimeSinceLastCheckpoint)
         {
             AddReward(-1);
-            EndEpisode();
+            End();
         }
 
         timeSinceLastCheckpoint += Time.fixedDeltaTime;  // Update the timer
@@ -168,7 +177,7 @@ public class AbelProto : Agent
                 {
                     // The object tried to enter from the front / side of checkpoint
                     AddReward(-3);
-                    EndEpisode();
+                    End();
                 }
 
             }
@@ -176,8 +185,14 @@ public class AbelProto : Agent
             {
                 // Entered a checkpoint that has already been triggered
                 AddReward(-3f);
-                EndEpisode();
+                End();
             }
         }
+    }
+
+    private void End() 
+    {
+        if (mode == AbelState.training)
+            EndEpisode();
     }
 }
