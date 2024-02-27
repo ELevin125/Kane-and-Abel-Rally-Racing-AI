@@ -39,7 +39,7 @@ public static class VehicleSensors
         float normalisedSpeed = Mathf.Clamp01(forwardVelocity / topSpeed);
         Debug.Log(normalisedSpeed);
         // float speedRayAngle = speedRayDistance + (1.5f * (1f - normalisedSpeed));
-        float speedRayAngle = speedRayDistance * Mathf.Clamp(1 - normalisedSpeed, 0.5f, 1f);
+        float speedRayAngle = speedRayDistance * Mathf.Clamp(1 - normalisedSpeed, 0.4f, 1f);
         // Aim rays down when car tilts up or down, to ensure rays hit the road
         // if (Mathf.Abs(NormalizeAngle(tf.localEulerAngles.x)) > 1)
         //     speedRayAngle += Mathf.Min(Mathf.Abs(NormalizeAngle(tf.localEulerAngles.x)) / 12 * 6f, 6f);

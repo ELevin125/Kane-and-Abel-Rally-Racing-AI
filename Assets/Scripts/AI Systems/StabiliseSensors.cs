@@ -18,13 +18,14 @@ public class StabiliseSensors : MonoBehaviour
         Ray ray = new Ray(transform.position + transform.up * yOffset, rayDirection);
         // Draw the ray for visualisation
         Debug.DrawRay(ray.origin, ray.direction * raycastLength, Color.magenta);
-
+        
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, raycastLength))
         {
             // Get the normal of the terrain at the hit point
             // i.e. the direction of the road ahead
             Vector3 terrainNormal = hit.normal;
+            Debug.DrawRay(hit.point, terrainNormal * 6, Color.black);
 
             // Calculate the rotation to align with the terrain normal
             Quaternion targetRotation = Quaternion.FromToRotation(transform.up, terrainNormal);
