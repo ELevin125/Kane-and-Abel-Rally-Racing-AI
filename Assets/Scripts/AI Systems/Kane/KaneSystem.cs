@@ -64,9 +64,9 @@ public class KaneSystem : MonoBehaviour
         // if (Mathf.Abs(NormalizeAngle(gameObject.transform.localEulerAngles.x)) > 1)
         //     speedRayAngle += Mathf.Min(Mathf.Abs(NormalizeAngle(gameObject.transform.localEulerAngles.x)) / 12 * 6f, 6f);
 
-        // float speedRayAngle = VehicleSensors.CalculateAngleForSpeed(transform, rb, speedRayDistance);
-        float speedRayAngle = 0f;
-        speedRays = VehicleSensors.CalculateRays(sensorTransform, speedRayCount, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayDistance);
+        float speedRayAngle = VehicleSensors.CalculateAngleForSpeed(transform, rb, speedRayDistance);
+        // float speedRayAngle = speedRayDistance;
+        speedRays = VehicleSensors.CalculateRays(sensorTransform, speedRayCount, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayAngle);
         ControlCar();
     }
     // float NormalizeAngle(float angle)
