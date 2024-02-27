@@ -82,15 +82,9 @@ public class AbelProto : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        // Vector3 checkpointForward = checkpoints.GetNextCheckpoint().transform.forward;
-        // float directionDot = Vector3.Dot(transform.forward, checkpointForward);
-        // sensor.AddObservation(directionDot);
         Vector3 normalVelocity = rb.velocity.normalized;
-        // sensor.AddObservation(normalVelocity);
         float speed = normalVelocity.magnitude;
         sensor.AddObservation(speed);
-
-        // sensor.AddObservation(transform.rotation.eulerAngles.x / 180);
 
         switch (collidedTag)
         {
@@ -121,16 +115,12 @@ public class AbelProto : Agent
         float throttleInput = Mathf.Clamp01(actions.ContinuousActions[0]);
         float brakeInput = Mathf.Clamp01(actions.ContinuousActions[1]);
         float steeringInput = actions.ContinuousActions[2];
-        // int handbrake = actions.DiscreteActions[0];
 
-        // Debug.Log("Brake " + brakeInput.ToString());
-        // Debug.Log("Throttle " + throttleInput.ToString());
         if (carController)
         {
             carController.SetThrottleInput(throttleInput);
             carController.SetBrakeInput(brakeInput);
             carController.SetSteeringInput(steeringInput);
-            // carController.SetHandbrake(handbrake > 0 ? true : false);
         }
     }
 

@@ -54,60 +54,11 @@ public class KaneSystem : MonoBehaviour
     void Update()
     {
         steeringRays = VehicleSensors.CalculateRays(sensorTransform, steeringRayCount, halfFieldOfView, rowCount, 3.5f, rowIncrement, steeringRayDistance);
-
-        // // Change ray aim based on speed, higher speed aims further away
-        // float forwardVelocity = Vector3.Dot(transform.forward, rb.velocity);
-        // float topSpeed = 35f;
-        // float normalisedSpeed = forwardVelocity / topSpeed;
-        // float speedRayAngle = speedRayDistance + (1.5f * (1f - normalisedSpeed));
-        // // Aim rays down when car tilts up or down, to ensure rays hit the road
-        // if (Mathf.Abs(NormalizeAngle(gameObject.transform.localEulerAngles.x)) > 1)
-        //     speedRayAngle += Mathf.Min(Mathf.Abs(NormalizeAngle(gameObject.transform.localEulerAngles.x)) / 12 * 6f, 6f);
-
         float speedRayAngle = VehicleSensors.CalculateAngleForSpeed(transform, rb, speedRayDistance);
         // float speedRayAngle = speedRayDistance;
         speedRays = VehicleSensors.CalculateRays(sensorTransform, speedRayCount, speedHalfFOV, speedRowCount,  0.2f, speedRowIncrement, speedRayAngle);
         ControlCar();
     }
-    // float NormalizeAngle(float angle)
-    // {
-    //     while (angle > 180f)
-    //     {
-    //         angle -= 360f;
-    //     }
-
-    //     while (angle <= -180f)
-    //     {
-    //         angle += 360f;
-    //     }
-
-    //     return angle;
-    // }
-
-    // // starting left, first half points left, second half points right 
-    // Vector3[] CalculateRays(int rayCount, float halfFieldOfView, int rowCount, float spread, float rowIncrement, float verticalAngle)
-    // {
-    //     List<Vector3> rays = new List<Vector3>();
-    //     for (int i = 0; i < rayCount; i++)
-    //     {   
-    //         float angle = 0f;
-    //         if (rayCount > 1)
-    //             angle = i * (halfFieldOfView * 2f / (rayCount - 1)) - halfFieldOfView; // Calculate angle within the specified range
-    //         else
-    //             angle = 0f;
-
-    //         for (int j = 0; j < rowCount; j++)
-    //         {
-    //             // Calculate direction for each ray within the specified range, slightly angled downwards
-    //             Vector3 rayDirection = Quaternion.AngleAxis(angle + Mathf.Sign(angle) * spread * j, transform.up) * Quaternion.AngleAxis(verticalAngle + rowIncrement * j * j, transform.right) * transform.forward;
-            
-    //             rays.Add(rayDirection);
-    //         }
-    //     }
-    //     return rays.ToArray();
-    // }
-
-
     void ControlCar()
     {
    
@@ -139,7 +90,7 @@ public class KaneSystem : MonoBehaviour
             else
                 carController.SetHandbrake(false);
         }
-        // steeringAngle = 0f;
+
         steeringAngle *= steeringCenterRate;
         if (Mathf.Abs(steeringAngle) < 0.05f)
             steeringAngle = 0;
@@ -202,7 +153,7 @@ public class KaneSystem : MonoBehaviour
                 }
                 else
                 {
-                    // offroad
+                    // off road
                     Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.red);   
                 }
             }
