@@ -60,7 +60,7 @@ public class WheelForces : MonoBehaviour
 
         if (wheelPrefab)
         {
-            wheel = Instantiate(wheelPrefab, transform.position, Quaternion.identity);
+            wheel = Instantiate(wheelPrefab, transform.position, transform.rotation);
             wheel.parent = transform;
             wheelModel = transform.GetChild(0).GetChild(0);
             trailRenderer = GetComponentInChildren<TrailRenderer>();
