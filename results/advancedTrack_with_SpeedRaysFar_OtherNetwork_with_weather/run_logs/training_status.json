@@ -1,0 +1,65 @@
+{
+    "AbelBehavior": {
+        "checkpoints": [
+            {
+                "steps": 3499937,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-3499937.onnx",
+                "reward": 119.86960779549554,
+                "creation_time": 1709227713.6013157,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-3499937.pt"
+                ]
+            },
+            {
+                "steps": 3999938,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-3999938.onnx",
+                "reward": null,
+                "creation_time": 1709228277.3287637,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-3999938.pt"
+                ]
+            },
+            {
+                "steps": 4499951,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-4499951.onnx",
+                "reward": 355.0256231887033,
+                "creation_time": 1709228839.6876533,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-4499951.pt"
+                ]
+            },
+            {
+                "steps": 4999957,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-4999957.onnx",
+                "reward": 232.6652628511656,
+                "creation_time": 1709229400.384684,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-4999957.pt"
+                ]
+            },
+            {
+                "steps": 5000021,
+                "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-5000021.onnx",
+                "reward": 232.6652628511656,
+                "creation_time": 1709229400.4297833,
+                "auxillary_file_paths": [
+                    "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-5000021.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000021,
+            "file_path": "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior.onnx",
+            "reward": 232.6652628511656,
+            "creation_time": 1709229400.4297833,
+            "auxillary_file_paths": [
+                "results\\advancedTrack_with_SpeedRaysFar_OtherNetwork_with_weather\\AbelBehavior\\AbelBehavior-5000021.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}

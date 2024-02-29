@@ -38,4 +38,12 @@ public class StageCondition : MonoBehaviour
         else
             stageGrip = 1.0f;
     }
+
+    void Update()
+    {
+        if (weather == WeatherCondition.rainy)
+            stageGrip = rainGrip;
+        else
+            stageGrip = 1.0f;
+    }
 }

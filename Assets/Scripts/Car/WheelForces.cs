@@ -44,6 +44,7 @@ public class WheelForces : MonoBehaviour
     private CarController carController;
 
     private float gripFromTerrain = 1f;
+    private StageCondition sc;
     void Awake()
     {
         Transform carRoot = VehicleHelper.FindCarRoot(transform);
@@ -54,7 +55,7 @@ public class WheelForces : MonoBehaviour
 
     private void Start()
     {   
-        gripFromTerrain = FindObjectOfType<StageCondition>().stageGrip;
+        sc = FindObjectOfType<StageCondition>();
         
         // Grab rigidbody from grandparent
         if (transform != null && transform.parent != null && transform.parent.parent != null)
@@ -74,6 +75,7 @@ public class WheelForces : MonoBehaviour
 
     private void FixedUpdate()
     {
+        gripFromTerrain = sc.stageGrip;
         normalizedSpeed = Mathf.Clamp01(Mathf.Abs(rb.velocity.magnitude) / topSpeed);
 
         SkidMarks();
