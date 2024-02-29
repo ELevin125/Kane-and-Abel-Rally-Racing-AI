@@ -643,6 +643,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3500
+  mode: 0
   maxTimeSinceLastCheckpoint: 15
   maxTimeOffroad: 50
   startPos: {fileID: 0}
@@ -695,9 +696,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 2012533779702359996}
-  raycastLength: 25.27
+  raycastLength: 40
   yOffset: 1.76
-  raycastAngle: 13.3
+  raycastAngle: 10
   rotationOffset: {fileID: 8730479036279469909}
 --- !u!1 &7066896287218244068
 GameObject:

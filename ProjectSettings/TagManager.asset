@@ -9,6 +9,7 @@ TagManager:
   - car
   - checkpoint
   - offroad
+  - rain
   layers:
   - Default
   - TransparentFX

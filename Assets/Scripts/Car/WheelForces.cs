@@ -42,6 +42,8 @@ public class WheelForces : MonoBehaviour
     private float normalizedSpeed = 0.0f;
     
     private CarController carController;
+
+    private float gripFromTerrain = 1f;
     void Awake()
     {
         Transform carRoot = VehicleHelper.FindCarRoot(transform);
@@ -51,7 +53,9 @@ public class WheelForces : MonoBehaviour
     }
 
     private void Start()
-    {
+    {   
+        gripFromTerrain = FindObjectOfType<StageCondition>().stageGrip;
+        
         // Grab rigidbody from grandparent
         if (transform != null && transform.parent != null && transform.parent.parent != null)
             rb = transform.parent.parent.GetComponent<Rigidbody>();
@@ -132,7 +136,7 @@ public class WheelForces : MonoBehaviour
         float steeringVel = Vector3.Dot(steeringDir, tireVel);
 
         float understeerPenalty = Mathf.Clamp01(1 - normalizedSpeed + 0.2f);
-        float desiredVelChange = -steeringVel * tireGrip * understeerPenalty;
+        float desiredVelChange = -steeringVel * tireGrip * gripFromTerrain * understeerPenalty;
         desiredVelChange = carController.handbrake ? desiredVelChange * tireGripHandbrakeLoss : desiredVelChange;
 
         float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
