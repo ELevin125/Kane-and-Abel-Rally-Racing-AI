@@ -13,6 +13,8 @@ public class CheckpointSystem : MonoBehaviour
     
     #if UNITY_EDITOR
     void OnValidate() {
+        if (checkpoints.Length == 0)
+            return;
         if (startIndex < 0 || startIndex > checkpoints.Length - 1)
         {
             Debug.LogError("Set startIndex to default. startIndex out of range. Max level should be the size of checkpoints array.");
