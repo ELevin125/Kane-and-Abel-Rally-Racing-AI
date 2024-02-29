@@ -76,7 +76,7 @@ public class WheelForces : MonoBehaviour
         RotateWheels();
         trueRestDist = suspensionRestDist + tireRadius;
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, (trueRestDist + maxSpringStretch)))
-        {
+        {   
             Suspension(hit);
             Steering();
             if (powered)
