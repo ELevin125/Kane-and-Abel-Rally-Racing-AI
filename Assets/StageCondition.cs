@@ -37,7 +37,5 @@ public class StageCondition : MonoBehaviour
         }
         else
             stageGrip = 1.0f;
-
-
     }
 }

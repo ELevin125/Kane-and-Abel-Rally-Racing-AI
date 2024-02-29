@@ -28,11 +28,13 @@ public class AbelProto : Agent
 
     private CarController carController;
 
-
-    void Awake()
+    private StageCondition sc;
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
         carController = GetComponent<CarController>();
+
+        sc = FindAnyObjectByType<StageCondition>();
     }
 
     public override void OnEpisodeBegin()
@@ -45,6 +47,8 @@ public class AbelProto : Agent
         checkpoints.ResetCheckpoints();
         transform.position = startPos.position;
         transform.rotation = startPos.rotation;
+
+
     }
 
     void FixedUpdate()
@@ -94,6 +98,7 @@ public class AbelProto : Agent
         Vector3 normalVelocity = rb.velocity.normalized;
         float speed = normalVelocity.magnitude;
         sensor.AddObservation(speed);
+        sensor.AddObservation(1 - Mathf.Floor(sc.stageGrip));
 
         switch (collidedTag)
         {
