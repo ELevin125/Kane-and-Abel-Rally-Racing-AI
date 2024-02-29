@@ -22,7 +22,10 @@ public class CheckpointSystem : MonoBehaviour
     private int oldStart = 0;
 
     void Update()
-    {   
+    { 
+        if (checkpoints.Length == 0)
+            return;
+
         if (oldStart != startIndex)
         {
             checkpoints[oldStart].ResetState();
