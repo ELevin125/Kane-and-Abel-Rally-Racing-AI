@@ -39,6 +39,9 @@ public class KaneSystem : MonoBehaviour
 
     [SerializeField]
     private Transform sensorTransform;
+
+    private StageCondition.WeatherCondition weather;
+    private StageCondition sc;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -47,12 +50,14 @@ public class KaneSystem : MonoBehaviour
 
     void Start()
     {
+        sc = FindObjectOfType<StageCondition>();
         if (steeringRayCount % 2 != 0)
             Debug.LogError("Should have an even amount of rays");
     }
 
     void Update()
     {
+        weather = sc.weather;
         steeringRays = VehicleSensors.CalculateRays(sensorTransform, steeringRayCount, halfFieldOfView, rowCount, 3.5f, rowIncrement, steeringRayDistance);
         float speedRayAngle = VehicleSensors.CalculateAngleForSpeed(transform, rb, speedRayDistance);
         // float speedRayAngle = speedRayDistance;
@@ -154,6 +159,10 @@ public class KaneSystem : MonoBehaviour
                 else
                 {
                     // off road
+                    if (weather == StageCondition.WeatherCondition.rainy)
+                        throttleInput -= 0.3f / (float)speedRays.Length;
+                    else
+                        throttleInput -= 0.1f / (float)speedRays.Length;
                     Debug.DrawRay(rayOrigin, rayDirection * hit.distance, Color.red);   
                 }
             }

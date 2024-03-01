@@ -75,6 +75,7 @@ public class WheelForces : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // update grip live, useful during AI training
         gripFromTerrain = sc.stageGrip;
         normalizedSpeed = Mathf.Clamp01(Mathf.Abs(rb.velocity.magnitude) / topSpeed);
 
