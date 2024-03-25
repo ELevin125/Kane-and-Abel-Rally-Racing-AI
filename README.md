@@ -5,7 +5,7 @@ Welcome to the Kane and Abel - Rally Racing AI project.
 
 ## Introduction
 
-This project explores the integration of AI systems into a rally racing game environment. Two AI models were developed and compared: one based on pre-programmed behaviors and another utilising machine learning techniques. Along with the two AI systems, the project includes a custom car controller, 3 rally stages and a basic weather system for each.
+This project explores the integration of AI systems into a rally racing game environment. Two AI models were developed and compared: one based on pre-programmed behaviors and another utilising machine learning techniques. Along with the two AI systems, the project includes a custom car controller, 3 rally stages and a basic weather system for each, developed in the Unity Engine.
 
 ## Installation
 
@@ -24,6 +24,8 @@ To install the project, follow these steps:
 Once the project is set up, you can navigate between the three stage scenes. In each scene's Hierarchy, navigate to `Environment -> Stage #`, where you'll find two game objects named "Kane" and "Abel". These are the AI racing systems.
 
 By default, Abel is enabled in all scenes. However, you can switch between the two agents by enabling and disabling them in the Inspector
+
+To change the weather condition, navigate to `Environment -> Stage #` in the Hierarchy, and change the "weather" variable of the "Stage Condition" component
 
 To control the car manually:
 
